@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+
 
 class GitStatus
 	attr_reader :path
@@ -29,13 +29,4 @@ class GitStatus
 	
 end
 
-# invocation tests =========================
-path = "/home/rob/scripts/Projects/rails_projects/sample_app"
-path2 = "/home/rob/scripts/Projects/rails_projects/first_app"
-git = GitStatus.new(path)
-#~ puts git.inspect
-#~ puts File.stat(git.path).ftype
-#~ puts "#{git.path}/.git"
-#~ puts git.message.class
-puts git.summary
-#~ puts git.message
+
