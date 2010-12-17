@@ -22,7 +22,7 @@ class GitStatus
 				counts[change] += 1
 			end	
 		  
-		  "[#{counts['M ']}][#{counts[' M']}][#{counts['??']}]"
+		  "[#{counts['M ']}] [#{counts[' M']}] [#{counts['??']}]"
 		  
 		end	
 	end
