@@ -1,28 +1,12 @@
 # the aim of this script is to take an arguement of a directory path, ensure it has a git repository
 # run the 'git status' command and interrogate the response for a status message
 # something like....
-# if all changes have been committed with the result of:
-		# On branch master
-		# nothing to commit (working directory clean)
-		# => then output "uptodate"
-# otherwise if there are uncommitted changes, like
-		# On branch master
-		# Changes to be committed:
-		#   (use "git reset HEAD <file>..." to unstage)
-		#
-		#       new file:   newfile
-		#
-		# Changed but not updated:
-		#   (use "git add <file>..." to update what will be committed)
-		#   (use "git checkout -- <file>..." to discard changes in working directory)
-		#
-		#       modified:   README
-		#
-		# Untracked files:
-		#   (use "git add <file>..." to include in what will be committed)
-		#
-		#       New Empty File1
-		#       New Empty File2
+
+`git status -s` returns
+M  README						# files that are staged => preceded by "M "
+ M Rakefile					# known files that are "Changed but not updated" => preceded by " M"
+?? New Empty File		# Untracked files => preceded by "??"
+?? New Empty File2  # Untracked files => preceded by "??"
 
 # output [1][1][2]
 
@@ -31,3 +15,6 @@
 #=========================
 #     ::  Git:sample_app		uptodate
 #     ::  Git:demo_app		  [1][1][2]
+
+
+
