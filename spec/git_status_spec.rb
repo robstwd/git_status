@@ -28,7 +28,7 @@ describe GitStatus do
 	
 	it "should return '[n][n][n]' when there are any files to be committed" do
 		if @git_stat.message != "" then
-			@git_stat.summary.should match(/\[\d+\]\[\d+\]\[\d+\]/)      # ie [n][n][n] (where there may be any number of digitd)
+			@git_stat.summary.should match(/\[\d+\] \[\d+\] \[\d+\]/)      # ie [n][n][n] (where there may be any number of digitd)
 		end
 	end
 	
