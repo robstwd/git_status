@@ -1,0 +1,15 @@
+[rob@myhost git_status]$ git status -s
+AM README.md
+ M bin/get_git_status.rb
+
+
+[1][2][0]
+
+
+path = "~/scripts/Projects/git_status"
+result = `cd #{path} && git status -s`
+change_list = message.split("\n")
+change_list.collect! { |change| change[0...2] }
+change_list.each do | change |
+	does it have a value in the first char?  => puts 1 staged file
+	does it have a value in the second char? => puts 1 unstaged & modified file
