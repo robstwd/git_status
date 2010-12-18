@@ -15,8 +15,8 @@ class GitStatus
 		if message == "" then
 			"uptodate"
 		else
-			change_list = message.split("\n")										# create an array of the separate lines (ie each file)
-			change_list.collect! { |change| change[0...2] }			# scan though the elements and keep only the first 2 characters
+			change_list = message.split("\n")										# create an array of the separate lines (ie each file) => ["AM README.md", " M bin/get_git_status.rb"]
+			change_list.collect! { |change| change[0...2] }			# scan though the elements and keep only the first 2 characters => ["AM", " M"]
 			counts      = Hash.new(0)
 			for change in change_list
 				counts[change] += 1
