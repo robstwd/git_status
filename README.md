@@ -2,6 +2,8 @@
 		
 This script scans a supplied path for a git repository and outputs a summarised status for [Conky](http://conky.sourceforge.net/).
 
+Just my efforts to learn some more Ruby, RSpec, Git and Conky.
+
 ## Output
 
 Depending upon the status it will output 2 options:
@@ -36,15 +38,22 @@ And introduced colour variations so that
 * "up to date" is displayed in green
 * any variation of [n]  [n]  [n] will display in red
  
-    ${if_match "${exec ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/git_status}" == "up to date"}${color2}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/git_status}${color}${else}${color red}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/git_status}${color}${endif}
+      ${if_match "${exec ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/git_status}" == "up to date"}${color2}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/git_status}${color}${else}${color red}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/git_status}${color}${endif}
+
+With the colours predefined earlier in the conky file as:
+ 
+			color1 00ffff
+			color2 00ff00
+			color3 ffff00
+			color4 ff0000
  
 # Under the bonnet
 
-The script runs the shell command "git status -s" within the chosen directory
+The script runs the shell command `git status -s` within the chosen directory.
 
-the output is "XY <filename>" where (according to the git status man page):
+The output is `XY filename` where (according to the git status man page):
 
-* <XY> is the status (where X shows the status of the index, and Y shows the status of the work tree. And untracked paths, XY is displayed as ??
+* `XY` is the status (where X shows the status of the index, and Y shows the status of the work tree. And untracked paths, XY is displayed as `??`
 * status codes are:
     * ' ' = unmodified
     * M = modified
@@ -53,13 +62,15 @@ the output is "XY <filename>" where (according to the git status man page):
     * R = renamed
     * C = copied
     * U = updated but unmerged
-* <filename> refers to the particular file in question 
+* `filename` refers to the particular file in question 
 
-The code looks for (and counts) records that have a value in the first position (ie signifying that there is a staged change to tracked files, ready for committing.
+The code:
 
-The code looks for (and counts) records that have a value in the second position (ie signifying that a tracked file has been modified but not yet staged.
+* looks for (and counts) records that have a value in the first position (ie signifying that there is a staged change to tracked files, ready for committing.
 
-Lastly the code looks for (and counts) records with "??" that signifies that files have not been tracked.
+* looks for (and counts) records that have a value in the second position (ie signifying that a tracked file has been modified but not yet staged.
+
+* looks for (and counts) records with "??" that signifies that files have not been tracked.
 
 # TODO
 1. error handling for an argument that isn't a path or the path doesn't contain a git repo
