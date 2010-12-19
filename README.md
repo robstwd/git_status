@@ -24,6 +24,12 @@ ${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/P
 I precede it with the name of the particular project, viz
 git_status $alignr${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/git_status}
 
+And introduced colour variations so that 
+ - "up to date" is displayed in green
+ - any variation of [n]  [n]  [n] will display in red
+ 
+${if_match "${exec ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/git_status}" == "up to date"}${color2}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/git_status}${color}${else}${color red}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/git_status}${color}${endif}
+ 
 # Under the bonnet
 The script runs the shell command "git status -s" within the chosen directory
 the output is "XY <filename>" where (according to the git status man page):
