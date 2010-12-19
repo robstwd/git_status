@@ -18,7 +18,11 @@ change_list.each do | change |
 	does it have a value in the second char? => puts 1 unstaged & modified file
 
 for each:	
+is it "??" => change[0...2] == "??"
+	if Y, untracked: += 1
 does it have a value in the first char? => change[0] != " "
-if y, :staged += 1
+if y, staged: += 1
 does it have a value in the second char?  => change[1] != " "
-if y, :unstaged += 1
+if y, unstaged: += 1
+
+added this to test git
