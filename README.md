@@ -3,18 +3,26 @@ This script scans a supplied path for a git repository and outputs a summarised 
 
 # Output
 depending upon the status it will output 2 options:
-1) if the git repo is clean ie no changes found, output is => uptodate
+1) if the git repo is clean ie no changes found, output is => up to date
 2) if the repo has some changes needing attention, the output changes to => [n1][n2][n3]
-		where n1 = the number staged changes, ready for committing
+		where n1 = the number staged changes to tracked files, ready for committing
 		where n2 = the number of tracked files that have been modified but not yet staged
 		where n3 = the number of untracked files
 
 # Usage
 Conky file to contain the following
 ${execpi 10 ruby ~/path/to/the/script/root/folder/bin/get_git_status.rb /path/to/project/dir/that/holds/the/git/repo}
+- execpi => runs the script
+- 10 		 => every 10 seconds
+- ruby   => runs the ruby executable
+- followed by the script path & name
+- follwed by the path to the project with the git repository
 
 In my case it looks like this:
 ${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/git_status}	
+
+I precede it with the name of the particular project, viz
+git_status $alignr${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/git_status}
 
 # Under the bonnet
 The script runs the shell command "git status -s" within the chosen directory
@@ -30,10 +38,12 @@ the output is "XY <filename>" where (according to the git status man page):
        ·    U = updated but unmerged
 	- <filename> refers to the particular file in question 
 
+The code looks for (and counts) records that have a value in the first position (ie signifying that there is a staged change to tracked files, ready for committing
+The code looks for (and counts) records that have a value in the second position (ie signifying that a tracked file has been modified but not yet staged
+Lastly the code looks for (and counts) records with "??" that signifies that files have not been tracked
+
 # TODO
 1) error handling for an argument that isn't a path or the path doesn't contain a git repo
 2) rspec these error handing options
-3) fix the count when a new file is added to the stage (ie git status -s => "A  README.md") and probably a bunch of other options
-4) push to GitHub
-5) document
-added this to test git
+3) push to GitHub
+4) document
