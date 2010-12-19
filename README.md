@@ -46,4 +46,4 @@ Lastly the code looks for (and counts) records with "??" that signifies that fil
 1) error handling for an argument that isn't a path or the path doesn't contain a git repo
 2) rspec these error handing options
 3) push to GitHub
-4) document
+4) document 
