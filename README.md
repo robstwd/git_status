@@ -35,3 +35,5 @@ the output is "XY <filename>" where (according to the git status man page):
 2) rspec these error handing options
 3) fix the count when a new file is added to the stage (ie git status -s => "A  README.md") and probably a bunch of other options
 4) push to GitHub
+5) document
+added this to test git

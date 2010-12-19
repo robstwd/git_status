@@ -2,10 +2,13 @@
 AM README.md
  M bin/get_git_status.rb
 
-
 [1][2][0]
 
+n1 = tracked file, modified, staged & ready for commit
+n2 = tracked file, modified, not staged
+n3 = untracked file, added, not staged
 
+IRB test
 path = "~/scripts/Projects/git_status"
 result = `cd #{path} && git status -s`
 change_list = message.split("\n")
@@ -13,3 +16,9 @@ change_list.collect! { |change| change[0...2] }
 change_list.each do | change |
 	does it have a value in the first char?  => puts 1 staged file
 	does it have a value in the second char? => puts 1 unstaged & modified file
+
+for each:	
+does it have a value in the first char? => change[0] != " "
+if y, :staged += 1
+does it have a value in the second char?  => change[1] != " "
+if y, :unstaged += 1
