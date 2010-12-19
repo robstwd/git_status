@@ -4,16 +4,17 @@ This script scans a supplied path for a git repository and outputs a summarised 
 
 ## Output
 
-depending upon the status it will output 2 options:
+Depending upon the status it will output 2 options:
 
-1) if the git repo is clean ie no changes found, output is => up to date
-2) if the repo has some changes needing attention, the output changes to => [n1][n2][n3]
-		where n1 = the number staged changes to tracked files, ready for committing
-		where n2 = the number of tracked files that have been modified but not yet staged
-		where n3 = the number of untracked files
+1. if the git repo is clean ie no changes found, output is => up to date
+2. if the repo has some changes needing attention, the output changes to => [n1]  [n2]  [n3]
+    * where n1 = the number staged changes to tracked files, ready for committing
+    * where n2 = the number of tracked files that have been modified but not yet staged
+    * where n3 = the number of untracked files
 
 # Usage
 Conky file to contain the following
+
 `${execpi 10 ruby ~/path/to/the/script/root/folder/bin/get_git_status.rb /path/to/project/dir/that/holds/the/git/repo}`
 * execpi => runs the script
 * 10 		 => every 10 seconds
