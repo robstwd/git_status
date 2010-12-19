@@ -30,12 +30,12 @@ describe GitStatus do
 		
 	end
 	
-	it "should return '[n][n][n]' when there are any files to be committed" do
+	it "should return '[n]  [n]  [n]' when there are any files to be committed" do
 		if @git_sampleapp.message != "" then
-			@git_sampleapp.summary.should match(/\[\d+\]  \[\d+\]  \[\d+\]/)     # ie [n][n][n] (where there may be any number of digitd)
+			@git_sampleapp.summary.should match(/\[\d+\]  \[\d+\]  \[\d+\]/)     # ie [n]  [n]  [n] (where there may be any number of digits)
 		end
 		if @git_firstapp.message != "" then
-			@git_firstapp.summary.should match(/\[\d+\]  \[\d+\]  \[\d+\]/)      # ie [n][n][n] (where there may be any number of digitd)
+			@git_firstapp.summary.should match(/\[\d+\]  \[\d+\]  \[\d+\]/)      # ie [n]  [n]  [n] (where there may be any number of digits)
 		end		
 		
 	end
