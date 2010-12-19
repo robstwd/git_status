@@ -1,21 +1,22 @@
 # git_status
 		
-This script scans a supplied path for a git repository and outputs a summarised status for conky
+This script scans a supplied path for a git repository and outputs a summarised status for [Conky](http://conky.sourceforge.net/).
 
 ## Output
 
 Depending upon the status it will output 2 options:
 
-1. if the git repo is clean ie no changes found, output is => up to date
-2. if the repo has some changes needing attention, the output changes to => [n1]  [n2]  [n3]
+1. if the git repo is clean ie no changes found, output is => `up to date`
+2. if the repo has some changes needing attention, the output changes to => `[n1]  [n2]  [n3]`
     * where n1 = the number staged changes to tracked files, ready for committing
     * where n2 = the number of tracked files that have been modified but not yet staged
     * where n3 = the number of untracked files
 
 # Usage
-Conky file to contain the following
+Conky config file to contain something like the following:
 
 `${execpi 10 ruby ~/path/to/the/script/root/folder/bin/get_git_status.rb /path/to/project/dir/that/holds/the/git/repo}`
+
 * execpi => runs the script
 * 10 		 => every 10 seconds
 * ruby   => runs the ruby executable
@@ -23,14 +24,17 @@ Conky file to contain the following
 * follwed by the path to the project with the git repository
 
 In my case it looks like this:
+
 `${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/git_status}`
 
 I precede it with the name of the particular project, viz
+
 `git_status $alignr${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/git_status}`
 
 And introduced colour variations so that 
- - "up to date" is displayed in green
- - any variation of [n]  [n]  [n] will display in red
+
+* "up to date" is displayed in green
+* any variation of [n]  [n]  [n] will display in red
  
 `${if_match "${exec ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/git_status}" == "up to date"}${color2}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/git_status}${color}${else}${color red}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/git_status}${color}${endif}`
  
