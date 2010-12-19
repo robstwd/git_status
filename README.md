@@ -14,7 +14,7 @@ Depending upon the status it will output 2 options:
     * where n2 = the number of tracked files that have been modified but not yet staged
     * where n3 = the number of untracked files
 
-# Usage
+## Usage
 Conky config file to contain something like the following:
 
 `${execpi 10 ruby ~/path/to/the/script/root/folder/bin/get_git_status.rb /path/to/project/dir/that/holds/the/git/repo}`
@@ -42,12 +42,12 @@ And introduced colour variations so that
 
 With the colours predefined earlier in the conky file as:
  
-			color1 00ffff
-			color2 00ff00
-			color3 ffff00
-			color4 ff0000
+    color1 00ffff
+    color2 00ff00
+    color3 ffff00
+    color4 ff0000
  
-# Under the bonnet
+## Under the bonnet
 
 The script runs the shell command `git status -s` within the chosen directory.
 
@@ -72,7 +72,7 @@ The code:
 
 * looks for (and counts) records with "??" that signifies that files have not been tracked.
 
-# TODO
+## TODO
 1. error handling for an argument that isn't a path or the path doesn't contain a git repo
 2. rspec these error handing options
 3. document 
