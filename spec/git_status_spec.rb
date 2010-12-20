@@ -3,8 +3,10 @@ require 'git_status'
 describe GitStatus do
 
 	before :each do
-      @git_sampleapp  = GitStatus.new("/home/rob/scripts/Projects/rails_projects/sample_app")
-      @git_firstapp  = GitStatus.new("/home/rob/scripts/Projects/rails_projects/first_app")
+    @git_sampleapp  = GitStatus.new("/home/rob/scripts/Projects/rails_projects/sample_app")
+    @git_firstapp   = GitStatus.new("/home/rob/scripts/Projects/rails_projects/first_app")
+    @git_notapath   = GitStatus.new("/home/rob/scripts/Projects/rails_projects/first_app/README.markdown")
+    @git_nogitrepo  = GitStatus.new("/home/rob/scripts/Projects/CDA_validator")
   end
 	
 	it "should be initialised with a valid directory" do
@@ -12,12 +14,22 @@ describe GitStatus do
 		File.stat(@git_sampleapp.path).file?.should be_false
 	end
 	
+	it "should return 'not a directory' if the arguement is not a path" do
+		@git_notapath.summary.should == "not a directory"
+	end
+	
 	it "should reference a path that contains a git repository" do
 		File.stat("#{@git_sampleapp.path}/.git").directory?.should be_true
 	end
 	
-	it "should output a string message from the system command `git status`" do
-		@git_sampleapp.message.class.should == String
+	it "should return 'no git repo' if the path doesn't contain a git repo" do 
+		@git_nogitrepo.summary.should == "no git repo"
+	end
+	
+	it "should output a string message" do
+		@git_sampleapp.summary.class.should == String
+		@git_notapath.summary.class.should == String
+		@git_nogitrepo.summary.class.should == String
 	end
 	
 	it "should return 'uptodate' when there is nothing to commit (ie working directory clean)" do
