@@ -6,22 +6,24 @@ Just my efforts to learn some more Ruby, RSpec, Git and Conky.
 
 ## Output
 
-Depending upon the status it will output 2 options:
+Depending upon the status it will output 2 main options:
 
 1. if the git repo is clean ie no changes found, output is => `up to date`
 2. if the repo has some changes needing attention, the output changes to => `[n1]  [n2]  [n3]`
     * where n1 = the number staged changes to tracked files, ready for committing
     * where n2 = the number of tracked files that have been modified but not yet staged
     * where n3 = the number of untracked files
+3. If a arguement is passed that is not a directory, output is `not a directory`
+4. If a arguement is passed that is a directory, but doesn't contain a git repository, output is `no git repo`
 
 ## Usage
 Conky config file to contain something like the following:
 
-`${execpi 10 ruby ~/path/to/the/script/root/folder/bin/get_git_status.rb /path/to/project/dir/that/holds/the/git/repo}`
+`${execpi 10 ruby /path/to/script-root-folder/bin/get_git_status.rb /path/to/project-dir-that-holds-the-git-repo}`
 
-* execpi => runs the script
-* 10 		 => every 10 seconds
-* ruby   => runs the ruby executable
+* `execpi` => runs the script
+* `10` 		 => every 10 seconds
+* `ruby`   => runs the ruby executable
 * followed by the script path & name
 * followed by the path to the project with the git repository
 
@@ -66,13 +68,20 @@ The output is `XY filename` where (according to the git status man page):
 
 The code:
 
+* checks first that the arguament passed is a directory which contains a git repository (ie a subfolder in the project root directory of `.git`)
+
 * looks for (and counts) records that have a value in the first position (ie signifying that there is a staged change to tracked files, ready for committing.
 
 * looks for (and counts) records that have a value in the second position (ie signifying that a tracked file has been modified but not yet staged.
 
 * looks for (and counts) records with "??" that signifies that files have not been tracked.
 
+## Dependencies
+
+* Ruby v1.9.x ('require_relative' in the main file only works with Ruby v1.9.x)
+* Git (version untested)
+* Conky (version untested)
+
 ## TODO
-1. error handling for an argument that isn't a path or the path doesn't contain a git repo
-2. rspec these error handing options
-3. document 
+1. do a better validation that a git repository has been initialised, rather than just checking that a sub-directory `.git` exists.
+(=> try running `git status` and check that `fatal: Not a git repository` is not returned)
