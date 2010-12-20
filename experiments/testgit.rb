@@ -1,6 +1,9 @@
 #!/usr/bin/env ruby 
 path        = "~/scripts/Projects/git_status"
+path        = "/home/rob/scripts/Projects/rails_projects/first_app/README.markdown"
 result      = `cd #{path} && git status -s`
+puts $?
+puts $?.exitstatus
 change_list = result.split("\n").collect! { |change| change[0...2] }
 puts change_list.inspect
 counts      = Hash.new(0)
