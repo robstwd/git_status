@@ -6,11 +6,22 @@ class GitStatus
 	end
 	
 	def message
-		@result = `cd #{path} && git status -s`
+		if File.stat(@path).directory? == false then
+			"not a directory"
+		elsif File.exist?("#{@path}/.git") == false then
+			"no git repo"
+		else
+			@result = `cd #{path} && git status -s`
+		end
+
 	end
 	
 	def summary
-		if message == "" then
+		if message == "not a directory" then
+			"not a directory"
+		elsif message == "no git repo" then
+			"no git repo"
+		elsif message == "" then
 			"up to date"
 		else
 			change_list = message.split("\n")										# create an array of the separate lines (ie each file) => ["AM README.md", " M bin/get_git_status.rb"]
