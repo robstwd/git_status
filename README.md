@@ -79,8 +79,8 @@ The code:
 ## Dependencies
 
 * Ruby v1.9.x ('require_relative' in the main file only works with Ruby v1.9.x)
-* Git (version untested)
-* Conky (version untested)
+* Git (works with v1.7.3.4; previous versions untested)
+* Conky (works with v1.8.1; previous versions untested)
 
 ## TODO
 1. do a better validation that a git repository has been initialised, rather than just checking that a sub-directory `.git` exists.
