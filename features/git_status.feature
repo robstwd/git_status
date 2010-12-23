@@ -1,20 +1,25 @@
-# the aim of this script is to take an arguement of a directory path, ensure it has a git repository
-# run the 'git status' command and interrogate the response for a status message
-# something like....
+Feature: status of git repository is outputted
 
-`git status -s` returns
-M  README						# files that are staged => preceded by "M "
- M Rakefile					# known files that are "Changed but not updated" => preceded by " M"
-?? New Empty File		# Untracked files => preceded by "??"
-?? New Empty File2  # Untracked files => preceded by "??"
+	As a maintainer of a git repository
+	I want to readily see the status of that repository
+	So that I can keep up-to-date with maintaining it
+	
+	Scenario: no changes to git repo
+		Given that a git repo exists for a given project
+		When I request the status with this script
+		Then I should see "up to date"
 
-# output [1][1][2]
+	Scenario: git repo has 1 staged change ready for commit
+		Given that one one modification has been staged 
+		When I request the status with this script
+		Then I should see "[1]  [0]  [0]"
 
-# this will be run by conky, such that 
-
-#=========================
-#     ::  Git:sample_app		uptodate
-#     ::  Git:demo_app		  [1][1][2]
-
-
-
+	Scenario: script is passed an arguement that is not a valid path
+		Given that the argument passed is not a valid directory
+		When I request the status with this script
+		Then I should see "not a directory"
+	
+	Scenario: script is passed a path, but there is no git repo
+		Given that the directory does not have a git repository
+		When I request the status with this script
+		Then I should see "no git repo"
