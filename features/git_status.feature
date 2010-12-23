@@ -1,4 +1,4 @@
-Feature: status of git repository is outputted
+Feature: status of an initialised git repository is outputted
 
 	As a maintainer of a git repository
 	I want to readily see the status of that repository
@@ -13,13 +13,3 @@ Feature: status of git repository is outputted
 		Given that one one modification has been staged 
 		When I request the status with this script
 		Then I should see "[1]  [0]  [0]"
-
-	Scenario: script is passed an arguement that is not a valid path
-		Given that the argument passed is not a valid directory
-		When I request the status with this script
-		Then I should see "not a directory"
-	
-	Scenario: script is passed a path, but there is no git repo
-		Given that the directory does not have a git repository
-		When I request the status with this script
-		Then I should see "no git repo"
