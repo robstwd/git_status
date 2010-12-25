@@ -95,4 +95,4 @@ The code:
 ## TODO
 1. do a better validation that a git repository has been initialised, rather than just checking that a sub-directory `.git` exists.
 (=> try running `git status` and check that `fatal: Not a git repository` is not returned)
-2. complete retrofitting cucumber features testing; use ''
+2. complete retrofitting cucumber features testing
