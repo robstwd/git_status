@@ -17,7 +17,7 @@ Depending upon the status it will output 2 main options:
 4. If a arguement is passed that is a directory, but doesn't contain a git repository, output is `no git repo`
 
 ### Output process
-For a project that has a Git repository and is tracked with this script, the changes that will be seen (as updated every 10 seconds as is configured below)is as follows:
+For a project that has a Git repository and is tracked with this script, the changes that will be seen (as updated every 10 seconds as is configured below) is as follows:
 
 1. Before making any changes to any project files,  output is => `up to date` (in green)
 2. When a new file is added (assuming that it does not meet .gitignore criteria),   output becomes => `[0]  [0]  [1]`
@@ -51,7 +51,7 @@ And introduced colour variations so that
 * "up to date" is displayed in green
 * any variation of [n]  [n]  [n] will display in red
  
-      ${if_match "${exec ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/git_status}" == "up to date"}${color2}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/git_status}${color}${else}${color red}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/git_status}${color}${endif}
+    ${if_match "${exec ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/git_status}" == "up to date"}${color2}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/git_status}${color}${else}${color red}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/git_status}${color}${endif}
 
 With the colours predefined earlier in the conky file as:
  
