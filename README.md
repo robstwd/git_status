@@ -16,20 +16,20 @@ Depending upon the status it will output 2 main options:
 3. If a arguement is passed that is not a directory, output is `not a directory`
 4. If a arguement is passed that is a directory, but doesn't contain a git repository, output is `no git repo`
 
-## Output process
+### Output process
 For a project that has a Git repository and is tracked with this script, the changes that will be seen (as updated every 10 seconds as is configured below)is as follows:
-1. Before making any changes to any project files,  output is => `up to date` (in green)
-2. When a new file is added (assuming that it does not meet .gitignore criteria),   output becomes => `[0]  [0]  [1]`
-3. When a file that is tracked by git is modified,  output becomes => `[0]  [1]  [1]`
-4. When the new file is added to the staging area (without any modifications), output becomes => `[1]  [1]  [0]`
-5. When "git commit -m 'file x added'" is run, output becomes => `[0]  [1]  [0]`
-6. When the modified file is added to the stageing area, output becomes => `[1]  [0]  [0]`
-7. Lastly, when "git commit -m 'changed file z'" is run, output becomes =>`up to date`
+1.  Before making any changes to any project files,  output is => `up to date` (in green)
+2.  When a new file is added (assuming that it does not meet .gitignore criteria),   output becomes => `[0]  [0]  [1]`
+3.  When a file that is tracked by git is modified,  output becomes => `[0]  [1]  [1]`
+4.  When the new file is added to the staging area (without any modifications), output becomes => `[1]  [1]  [0]`
+5.  When "git commit -m 'file x added'" is run, output becomes => `[0]  [1]  [0]`
+6.  When the modified file is added to the stageing area, output becomes => `[1]  [0]  [0]`
+7.  Lastly, when "git commit -m 'changed file z'" is run, output becomes =>`up to date`
 
 ## Conky Config
 Conky config file to contain something like the following:
 
-`${execpi 10 ruby /path/to/script-root-folder/bin/get_git_status.rb /path/to/project-dir-that-holds-the-git-repo}`
+    ${execpi 10 ruby /path/to/script-root-folder/bin/get_git_status.rb /path/to/project-dir-that-holds-the-git-repo}
 
 * `execpi` => runs the script
 * `10` 		 => every 10 seconds
@@ -39,11 +39,11 @@ Conky config file to contain something like the following:
 
 In my case it looks like this:
 
-`${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/git_status}`
+    ${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/git_status}
 
 I precede it with the name of the particular project, viz
 
-`git_status $alignr${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/git_status}`
+    git_status $alignr${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/git_status}
 
 And introduced colour variations so that 
 
