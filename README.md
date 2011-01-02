@@ -18,13 +18,14 @@ Depending upon the status it will output 2 main options:
 
 ### Output process
 For a project that has a Git repository and is tracked with this script, the changes that will be seen (as updated every 10 seconds as is configured below)is as follows:
-1.  Before making any changes to any project files,  output is => `up to date` (in green)
-2.  When a new file is added (assuming that it does not meet .gitignore criteria),   output becomes => `[0]  [0]  [1]`
-3.  When a file that is tracked by git is modified,  output becomes => `[0]  [1]  [1]`
-4.  When the new file is added to the staging area (without any modifications), output becomes => `[1]  [1]  [0]`
-5.  When "git commit -m 'file x added'" is run, output becomes => `[0]  [1]  [0]`
-6.  When the modified file is added to the stageing area, output becomes => `[1]  [0]  [0]`
-7.  Lastly, when "git commit -m 'changed file z'" is run, output becomes =>`up to date`
+
+1. Before making any changes to any project files,  output is => `up to date` (in green)
+2. When a new file is added (assuming that it does not meet .gitignore criteria),   output becomes => `[0]  [0]  [1]`
+3. When a file that is tracked by git is modified,  output becomes => `[0]  [1]  [1]`
+4. When the new file is added to the staging area (without any modifications), output becomes => `[1]  [1]  [0]`
+5. When "git commit -m 'file x added'" is run, output becomes => `[0]  [1]  [0]`
+6. When the modified file is added to the stageing area, output becomes => `[1]  [0]  [0]`
+7. Lastly, when "git commit -m 'changed file z'" is run, output becomes =>`up to date`
 
 ## Conky Config
 Conky config file to contain something like the following:
