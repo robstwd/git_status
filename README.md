@@ -51,7 +51,7 @@ And introduced colour variations so that
 * "up to date" is displayed in green
 * any variation of [n]  [n]  [n] will display in red
  
-    ${if_match "${exec ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/git_status}" == "up to date"}${color2}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/git_status}${color}${else}${color red}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/git_status}${color}${endif}
+`${if_match "${exec ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/git_status}" == "up to date"}${color2}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/git_status}${color}${else}${color red}${execpi 10 ruby ~/scripts/Projects/git_status/bin/get_git_status.rb ~/scripts/Projects/git_status}${color}${endif}`
 
 With the colours predefined earlier in the conky file as:
  
