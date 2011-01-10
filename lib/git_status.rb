@@ -6,7 +6,9 @@ class GitStatus
 	end
 	
 	def message
-		if File.stat(@path).directory? == false then
+		if File.exist?(@path) == false then
+			"no such directory"
+		elsif File.stat(@path).directory? == false then
 			"not a directory"
 		elsif File.exist?("#{@path}/.git") == false then
 			"no git repo"
@@ -21,6 +23,8 @@ class GitStatus
 			"not a directory"
 		elsif message == "no git repo" then
 			"no git repo"
+		elsif message == "no such directory" then
+			"no such directory"
 		elsif message == "" then
 			"up to date"
 		else
