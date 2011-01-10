@@ -7,6 +7,7 @@ describe GitStatus do
     @git_firstapp   = GitStatus.new("/home/rob/scripts/Projects/rails_projects/first_app")
     @git_notapath   = GitStatus.new("/home/rob/scripts/Projects/rails_projects/first_app/README.markdown")
     @git_nogitrepo  = GitStatus.new("/home/rob/scripts/Projects/CDA_validator")
+    @git_pathdoesntexist  = GitStatus.new("/home/rob/scripts/Projects/nothing")    
   end
 	
 	it "should be initialised with a valid directory" do
@@ -24,6 +25,10 @@ describe GitStatus do
 	
 	it "should return 'no git repo' if the path doesn't contain a git repo" do 
 		@git_nogitrepo.summary.should == "no git repo"
+	end
+	
+	it "should return 'no such directory' if the path doesn't actually exist" do 
+		@git_pathdoesntexist.summary.should == "no such directory"
 	end
 	
 	it "should output a string message" do
