@@ -13,3 +13,8 @@ Feature: error message is outputted when an invalid arguement is passed
 		Given that the path provided in the arguement does not contain a git repo
 		When I request the status with this script
 		Then "no git repo" should be the output
+
+  Scenario: the path provided in the arguement does not actually exist
+		Given that the path provided in the arguement does not actually exist
+		When I request the status with this script
+		Then "path doesn't exist" should be the output
