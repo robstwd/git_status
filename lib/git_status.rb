@@ -56,8 +56,22 @@ class GitStatus
 		
 	end
 	
+	# determine whether the remote origin/master has been updated from the last local commit
+	def origin_status
+		
+		# the git alias of `git hist` outputs each commit on a single line with the comment & status; such as
+				#~ * f5223de 2010-12-12 | added Heroku link to the readme (HEAD, origin/master, master) [Rob Eastwood]
+				#~ * 147a325 2010-12-12 | Improved the README (heroku/master) [Rob Eastwood
+		@result = `cd #{@path} && git hist`
+		
+		# when the last commit has been pushed to the remote origin/master, then the log will include the text "origin/master, master", as above
+		if @result.include? "origin/master, master" then
+			"up-to-date"
+		else
+			"out-of-date"
+		end
+	end
+	
 end 
-
-
 
 
