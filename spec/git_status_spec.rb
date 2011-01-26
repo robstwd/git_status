@@ -4,10 +4,11 @@ describe GitStatus do
 
 	before :each do
     @git_sampleapp  = GitStatus.new("/home/rob/scripts/Projects/rails_projects/sample_app")
-    @git_firstapp   = GitStatus.new("/home/rob/scripts/Projects/rails_projects/first_app")
+    @git_firstapp   = GitStatus.new("/home/rob/scripts/Projects/rails_projects/first_app")	# clean working dir & origin/master in sync
     @git_notapath   = GitStatus.new("/home/rob/scripts/Projects/rails_projects/first_app/README.markdown")
     @git_nogitrepo  = GitStatus.new("/home/rob/scripts/Projects/CDA_validator")
     @git_pathdoesntexist  = GitStatus.new("/home/rob/scripts/Projects/nothing")    
+    @git_origin_outofdate  = GitStatus.new("/home/rob/scripts/Projects/git_status")    
   end
 	
 	it "should be initialised with a valid directory" do
@@ -57,5 +58,14 @@ describe GitStatus do
 		
 	end
 	
+	context "origin status" do
+		it "should return 'origin up-to-date' when the origin is up to date with the local repo" do
+			@git_firstapp.origin_status.should == "up-to-date"
+		end
+		it "should return 'origin out-of-date' when the origin is not up to date with the local repo" do
+			@git_origin_outofdate.origin_status.should == "out-of-date"
+		end
+		
+	end
+	
 end
-
