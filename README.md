@@ -79,7 +79,7 @@ The output is `XY filename` where (according to the git status man page):
 
 The code:
 
-* checks first that the arguament passed is a directory which contains a git repository (ie a subfolder in the project root directory of `.git`)
+* checks first that the argument passed is a directory which contains a git repository (ie a subfolder in the project root directory of `.git`)
 
 * looks for (and counts) records that have a value in the first position (ie signifying that there is a staged change to tracked files, ready for committing.
 
@@ -97,3 +97,4 @@ The code:
 1. do a better validation that a git repository has been initialised, rather than just checking that a sub-directory `.git` exists.
 (=> try running `git status` and check that `fatal: Not a git repository` is not returned)
 2. complete retrofitting cucumber features testing
+3. update this README with new feature that checks for the status of the remote repo and whether it is in sync with the latest local commit 
