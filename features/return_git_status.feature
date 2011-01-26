@@ -6,6 +6,7 @@ Feature: status of an initialised git repository is outputted
 	
 	Scenario: no changes to git repo
 		Given that a git repo exists for a given project
+		And that the working directory is clean
 		When I request the status with this script
 		Then I should see "up to date"
 
