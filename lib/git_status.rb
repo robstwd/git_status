@@ -67,8 +67,10 @@ class GitStatus
 		# when the last commit has been pushed to the remote origin/master, then the log will include the text "origin/master, master", as above
 		if @result.include? "origin/master, master" then
 			"up-to-date"
-		else
+        elsif @result.include? "origin/master" then
 			"out-of-date"
+        else
+          "no remote"
 		end
 	end
 	
