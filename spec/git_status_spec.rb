@@ -9,6 +9,7 @@ describe GitStatus do
     @git_nogitrepo  = GitStatus.new("/home/rob/scripts/Projects/CDA_validator")
     @git_pathdoesntexist  = GitStatus.new("/home/rob/scripts/Projects/nothing")    
     @git_origin_outofdate  = GitStatus.new("/home/rob/scripts/Projects/git_status")    
+    @git_no_remote  = GitStatus.new("/home/rob/scripts/Projects/stinky")    
   end
 	
 	it "should be initialised with a valid directory" do
@@ -65,6 +66,9 @@ describe GitStatus do
 		it "should return 'origin out-of-date' when the origin is not up to date with the local repo" do
 			@git_origin_outofdate.origin_status.should == "out-of-date"
 		end
+        it "should return 'no remote' when there is no remote set up yet" do
+          @git_no_remote.origin_status.should == "no remote"
+        end
 		
 	end
 	
