@@ -62,7 +62,7 @@ class GitStatus
 		# the git alias of `git hist` outputs each commit on a single line with the comment & status; such as
 				#~ * f5223de 2010-12-12 | added Heroku link to the readme (HEAD, origin/master, master) [Rob Eastwood]
 				#~ * 147a325 2010-12-12 | Improved the README (heroku/master) [Rob Eastwood
-		@result = `cd #{@path} && git hist`
+		@result = `cd #{@path} && git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short`
 		
 		# when the last commit has been pushed to the remote origin/master, then the log will include the text "origin/master, master", as above
 		if @result.include? "origin/master, master" then
